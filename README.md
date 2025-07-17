@@ -72,6 +72,63 @@ The Vertex AI API provides a [free tier](https://cloud.google.com/vertex-ai/gene
 
 For other authentication methods, including Google Workspace accounts, see the [authentication](./docs/cli/authentication.md) guide.
 
+## Local Development - Mathematical Assistant
+
+This fork includes enhanced mathematical capabilities with LaTeX compilation support. If you're working with this local repository, you can use the enhanced version:
+
+### Setup Local Mathematical CLI
+
+1. **Clone and setup the repository:**
+   ```bash
+   git clone https://github.com/your-username/gemini-cli
+   cd gemini-cli
+   pnpm install
+   ```
+
+2. **Create an alias for the mathematical CLI:**
+   ```bash
+   # Add to your ~/.bashrc or ~/.zshrc
+   alias mathcli="node /Users/hanzhangyin/Documents/GitHub/gemini-cli/scripts/start.js"
+   ```
+
+3. **Use the mathematical CLI:**
+   ```bash
+   mathcli
+   ```
+
+### Mathematical Features
+
+The local version includes additional tools for mathematical and academic work:
+
+- **LaTeX Compiler**: Compile LaTeX documents with multiple compilers (pdflatex, xelatex, lualatex)
+- **Theorem Extraction**: Parse and analyze mathematical theorems from LaTeX documents
+- **Bibliography Management**: Handle BibTeX references and citations
+- **Multi-pass Compilation**: Support for complex documents with cross-references
+
+### LaTeX Compilation Example
+
+```bash
+mathcli
+> Compile my LaTeX document at /path/to/document.tex with xelatex and run bibtex
+```
+
+Or use the tool directly:
+```bash
+mathcli
+> Use compile_latex to compile /path/to/paper.tex with compiler="xelatex", passes=2, run_bibtex=true
+```
+
+### Mathematical Tool Features
+
+- **Multiple Compilers**: pdflatex, xelatex, lualatex, latex
+- **Output Formats**: PDF, DVI, PS
+- **Bibliography Processing**: Automatic BibTeX/biber integration
+- **Index Generation**: MakeIndex support
+- **Multi-pass Compilation**: Up to 5 passes for cross-references
+- **Real-time Output**: Live compilation feedback
+- **Error Detection**: Comprehensive warning and error parsing
+- **Auxiliary File Management**: Automatic cleanup options
+
 ## Examples
 
 Once the CLI is running, you can start interacting with Gemini from your shell.

@@ -29,6 +29,7 @@ import {
 } from '../tools/memoryTool.js';
 import { WebSearchTool } from '../tools/web-search.js';
 import { TheoremExtractorTool } from '../tools/theorem-extractor.js';
+import { LatexCompilerTool } from '../tools/latex-compiler.js';
 import { GeminiClient } from '../core/client.js';
 import { FileDiscoveryService } from '../services/fileDiscoveryService.js';
 import { GitService } from '../services/gitService.js';
@@ -587,6 +588,7 @@ export class Config {
     registerCoreTool(MemoryTool);
     registerCoreTool(WebSearchTool, this);
     registerCoreTool(TheoremExtractorTool, this);
+    registerCoreTool(LatexCompilerTool, this);
 
     await registry.discoverTools();
     return registry;

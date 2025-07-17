@@ -5,6 +5,7 @@
 
   - packages/cli: Terminal interface, UI components, and user interactions
   - packages/core: API communication, tool orchestration, and business logic
+  - Use pnpm as package manager.
 
   Key Components
 
@@ -60,7 +61,7 @@
 
   Phase 1: Core Mathematical Tools
 
-  1. LaTeX compiler integration
+  1. ✅ LaTeX compiler integration (COMPLETED)
   2. ✅ Theorem extraction and parsing (COMPLETED)
   3. Mathematical symbol conversion
   4. Bibliography management

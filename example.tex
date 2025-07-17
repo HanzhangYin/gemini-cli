@@ -1,0 +1,57 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+
+\title{LaTeX Compiler Tool Demo}
+\author{Gemini CLI}
+\date{\today}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+
+\begin{document}
+
+\maketitle
+
+\section{Introduction}
+
+This is a demonstration of the LaTeX compiler tool integrated into the Gemini CLI. The tool provides comprehensive LaTeX compilation capabilities.
+
+\section{Mathematical Content}
+
+\begin{theorem}[Pythagorean Theorem]
+\label{thm:pythagoras}
+In a right triangle, the square of the hypotenuse equals the sum of squares of the other two sides:
+\begin{equation}
+c^2 = a^2 + b^2
+\end{equation}
+\end{theorem}
+
+\begin{lemma}
+\label{lem:quadratic}
+For a quadratic equation $ax^2 + bx + c = 0$ with $a \neq 0$, the solutions are:
+\begin{equation}
+x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}
+\end{equation}
+\end{lemma}
+
+\section{Features}
+
+The LaTeX compiler tool supports:
+
+\begin{itemize}
+\item Multiple LaTeX compilers (pdflatex, xelatex, lualatex)
+\item Multi-pass compilation for cross-references
+\item Bibliography processing with BibTeX
+\item Index generation with MakeIndex
+\item Auxiliary file management
+\item Real-time compilation output
+\item Error and warning detection
+\end{itemize}
+
+\section{Conclusion}
+
+This tool enhances the Gemini CLI with powerful LaTeX compilation capabilities, making it suitable for mathematical and scientific document processing.
+
+\end{document}
