@@ -20,6 +20,7 @@
   - Web search and fetch capabilities
   - Memory persistence across sessions
   - MCP (Model Context Protocol) for extensibility
+  - Theorem extraction and parsing from LaTeX documents
 
   3. Configuration & Authentication
   - Hierarchical settings system (system → user → workspace → CLI args)
@@ -50,6 +51,7 @@
   - Memory System: Persistent context across sessions
   - Multi-modal: Supports text, images, and various file types
   - Extensibility: MCP protocol for third-party integrations
+  - Mathematical Analysis: Extract and analyze theorems from LaTeX documents
 
   The CLI provides a safe, controlled environment for AI-assisted development tasks with
   robust error handling, security features, and comprehensive tooling capabilities.
@@ -59,7 +61,7 @@
   Phase 1: Core Mathematical Tools
 
   1. LaTeX compiler integration
-  2. Theorem extraction and parsing
+  2. ✅ Theorem extraction and parsing (COMPLETED)
   3. Mathematical symbol conversion
   4. Bibliography management
 
