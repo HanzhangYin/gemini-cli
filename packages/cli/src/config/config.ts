@@ -40,6 +40,7 @@ export interface CliArgs {
   model: string | undefined;
   sandbox: boolean | string | undefined;
   sandboxImage: string | undefined;
+  directory: string | undefined;
   debug: boolean | undefined;
   prompt: string | undefined;
   promptInteractive: string | undefined;
@@ -91,6 +92,11 @@ export async function parseArguments(): Promise<CliArgs> {
     .option('sandbox-image', {
       type: 'string',
       description: 'Sandbox image URI.',
+    })
+    .option('directory', {
+      alias: 'C',
+      type: 'string',
+      description: 'Run from specified directory',
     })
     .option('debug', {
       alias: 'd',
@@ -336,7 +342,7 @@ export async function loadCliConfig(
     sessionId,
     embeddingModel: DEFAULT_GEMINI_EMBEDDING_MODEL,
     sandbox: sandboxConfig,
-    targetDir: process.cwd(),
+    targetDir: argv.directory || process.cwd(),
     debugMode,
     question: argv.promptInteractive || argv.prompt || '',
     fullContext: argv.allFiles || argv.all_files || false,
