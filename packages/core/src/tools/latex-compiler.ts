@@ -16,6 +16,7 @@ import {
   ToolCallConfirmationDetails,
   ToolExecuteConfirmationDetails,
   ToolConfirmationOutcome,
+  Icon,
 } from './tools.js';
 import { Type } from '@google/genai';
 import { SchemaValidator } from '../utils/schemaValidator.js';
@@ -96,6 +97,7 @@ Features:
 - Real-time compilation output
 
 The tool returns compilation results including output files, errors, warnings, and statistics.`,
+      Icon.Hammer,
       {
         type: Type.OBJECT,
         properties: {

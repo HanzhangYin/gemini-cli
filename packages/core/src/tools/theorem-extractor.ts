@@ -5,7 +5,7 @@
  */
 
 import path from 'path';
-import { BaseTool, ToolResult } from './tools.js';
+import { BaseTool, ToolResult, Icon } from './tools.js';
 import { Type } from '@google/genai';
 import { SchemaValidator } from '../utils/schemaValidator.js';
 import { makeRelative, shortenPath } from '../utils/paths.js';
@@ -79,6 +79,7 @@ export class TheoremExtractorTool extends BaseTool<TheoremExtractorParams, ToolR
       TheoremExtractorTool.Name,
       'TheoremExtractor',
       'Extracts and parses mathematical theorems from LaTeX documents. Identifies theorem environments, extracts statements, labels, and references.',
+      Icon.FileSearch,
       {
         properties: {
           absolute_path: {
