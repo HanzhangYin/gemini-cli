@@ -102,3 +102,26 @@
 
   With the proposed enhancements, it would become a powerful environment for mathematical research, theorem development, and proof construction, while
   maintaining the safety and user-friendly aspects of the current system.
+
+ Theorem Indexing Capabilities
+
+  Key Features Added:
+
+  Enhanced Indexing:
+  - Theorem Index: Maps theorem labels to IDs, organizes by type, and creates symbol indices
+  - Dependency Graph: Tracks which theorems depend on others through references
+  - Relationship Mapping: Identifies theorem dependencies and dependents
+  - Cyclic Dependency Detection: Warns about circular references between theorems
+
+  Additional Data Structures:
+  - IndexedTheorem: Extended theorem interface with indexing metadata
+  - TheoremIndex: Comprehensive index structure with multiple lookup tables
+  - TheoremIndexingResult: Enhanced result with dependency analysis
+
+  Advanced Analysis:
+  - Orphaned theorem detection (theorems with no dependencies/dependents)
+  - Symbol usage tracking across theorems
+  - Comprehensive dependency graph visualization
+  - Statistical summaries with indexing metrics
+
+  The new tool is registered as index_theorems and provides all the functionality of the original extract_theorems tool plus comprehensive indexing and relationship analysis capabilities.
