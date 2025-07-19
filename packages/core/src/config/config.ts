@@ -74,9 +74,10 @@ export interface TelemetrySettings {
   logPrompts?: boolean;
 }
 
-export interface ActiveExtension {
+export interface GeminiCLIExtension {
   name: string;
   version: string;
+  isActive: boolean;
 }
 
 export class MCPServerConfig {
@@ -100,6 +101,7 @@ export class MCPServerConfig {
     readonly description?: string,
     readonly includeTools?: string[],
     readonly excludeTools?: string[],
+    readonly extensionName?: string,
   ) {}
 }
 
@@ -150,7 +152,8 @@ export interface ConfigParameters {
   maxSessionTurns?: number;
   experimentalAcp?: boolean;
   listExtensions?: boolean;
-  activeExtensions?: ActiveExtension[];
+  extensions?: GeminiCLIExtension[];
+  blockedMcpServers?: Array<{ name: string; extensionName: string }>;
   noBrowser?: boolean;
   summarizeToolOutput?: Record<string, SummarizeToolOutputSettings>;
   ideMode?: boolean;
@@ -197,7 +200,11 @@ export class Config {
   private modelSwitchedDuringSession: boolean = false;
   private readonly maxSessionTurns: number;
   private readonly listExtensions: boolean;
-  private readonly _activeExtensions: ActiveExtension[];
+  private readonly _extensions: GeminiCLIExtension[];
+  private readonly _blockedMcpServers: Array<{
+    name: string;
+    extensionName: string;
+  }>;
   flashFallbackHandler?: FlashFallbackHandler;
   private quotaErrorOccurred: boolean = false;
   private readonly summarizeToolOutput:
@@ -248,7 +255,8 @@ export class Config {
     this.maxSessionTurns = params.maxSessionTurns ?? -1;
     this.experimentalAcp = params.experimentalAcp ?? false;
     this.listExtensions = params.listExtensions ?? false;
-    this._activeExtensions = params.activeExtensions ?? [];
+    this._extensions = params.extensions ?? [];
+    this._blockedMcpServers = params.blockedMcpServers ?? [];
     this.noBrowser = params.noBrowser ?? false;
     this.summarizeToolOutput = params.summarizeToolOutput;
     this.ideMode = params.ideMode ?? false;
@@ -508,8 +516,12 @@ export class Config {
     return this.listExtensions;
   }
 
-  getActiveExtensions(): ActiveExtension[] {
-    return this._activeExtensions;
+  getExtensions(): GeminiCLIExtension[] {
+    return this._extensions;
+  }
+
+  getBlockedMcpServers(): Array<{ name: string; extensionName: string }> {
+    return this._blockedMcpServers;
   }
 
   getNoBrowser(): boolean {
