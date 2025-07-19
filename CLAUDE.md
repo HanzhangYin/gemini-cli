@@ -125,3 +125,10 @@
   - Statistical summaries with indexing metrics
 
   The new tool is registered as index_theorems and provides all the functionality of the original extract_theorems tool plus comprehensive indexing and relationship analysis capabilities.
+
+ Dependency and Warning Management
+
+  - The issue was caused by pnpm setting environment variables that npm considers deprecated. By setting loglevel=error in your .npmrc file, npm will only
+  show errors and not warnings, which eliminates these specific deprecation warnings.
+
+  - Summary: Fixed by adding loglevel=error to your .npmrc file, which suppresses npm warnings while keeping error messages visible.
