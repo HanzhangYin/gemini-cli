@@ -61,6 +61,21 @@ export * from './tools/theorem-extractor.js';
 export * from './tools/mcp-client.js';
 export * from './tools/mcp-tool.js';
 
+// MCP OAuth
+export { MCPOAuthProvider } from './mcp/oauth-provider.js';
+export {
+  MCPOAuthToken,
+  MCPOAuthCredentials,
+  MCPOAuthTokenStorage,
+} from './mcp/oauth-token-storage.js';
+export type { MCPOAuthConfig } from './mcp/oauth-provider.js';
+export type {
+  OAuthAuthorizationServerMetadata,
+  OAuthProtectedResourceMetadata,
+} from './mcp/oauth-utils.js';
+export { OAuthUtils } from './mcp/oauth-utils.js';
+
 // Export telemetry functions
 export * from './telemetry/index.js';
 export { sessionId } from './utils/session.js';
+export * from './utils/browser.js';
