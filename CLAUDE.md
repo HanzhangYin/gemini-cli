@@ -5,7 +5,7 @@
 
   - packages/cli: Terminal interface, UI components, and user interactions
   - packages/core: API communication, tool orchestration, and business logic
-  - Use pnpm as package manager.
+  - Use npm as package manager (not pnpm due to dependency resolution issues).
 
   Key Components
 
