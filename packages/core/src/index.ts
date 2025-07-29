@@ -60,6 +60,7 @@ export * from './tools/web-search.js';
 export * from './tools/read-many-files.js';
 export * from './tools/theorem-extractor.js';
 export * from './tools/theorem-indexer.js';
+export * from './tools/get-proof.js';
 export * from './tools/mcp-client.js';
 export * from './tools/mcp-tool.js';
 
