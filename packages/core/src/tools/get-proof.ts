@@ -5,11 +5,12 @@
  */
 
 import path from 'path';
+import { execSync } from 'child_process';
 import { BaseTool, ToolResult, Icon } from './tools.js';
 import { Type } from '@google/genai';
 import { SchemaValidator } from '../utils/schemaValidator.js';
 import { makeRelative, shortenPath } from '../utils/paths.js';
-import { isWithinRoot, processSingleFileContent } from '../utils/fileUtils.js';
+import { isWithinRoot } from '../utils/fileUtils.js';
 import { Config } from '../config/config.js';
 import { getErrorMessage } from '../utils/errors.js';
 
@@ -167,29 +168,24 @@ export class GetProofTool extends BaseTool<GetProofParams, ToolResult> {
     }
 
     try {
-      // Read the LaTeX file
-      const fileResult = await processSingleFileContent(
-        params.absolute_path,
-        this.config.getTargetDir(),
-      );
-
-      if (fileResult.error) {
+      // Read the LaTeX file using cat command
+      let fileContent: string;
+      try {
+        fileContent = execSync(`cat "${params.absolute_path}"`, {
+          encoding: 'utf8',
+          maxBuffer: 10 * 1024 * 1024, // 10MB max buffer
+        });
+      } catch (catError) {
+        const errorMessage = getErrorMessage(catError);
         return {
-          llmContent: fileResult.error,
-          returnDisplay: fileResult.returnDisplay,
-        };
-      }
-
-      if (typeof fileResult.llmContent !== 'string') {
-        return {
-          llmContent: 'Error: File content is not text',
-          returnDisplay: 'Error: File must be a text file',
+          llmContent: `Error reading file with cat: ${errorMessage}`,
+          returnDisplay: `Error: Could not read file - ${errorMessage}`,
         };
       }
 
       // Find the proof
       const proofResult = await this.findProof(
-        fileResult.llmContent,
+        fileContent,
         params.absolute_path,
         params,
         signal,
